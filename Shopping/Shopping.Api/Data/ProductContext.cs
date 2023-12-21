@@ -12,8 +12,8 @@ namespace Shopping.Api.Data
         {
             var client = new MongoClient(config["DatabaseSettings:ConnectionString"]);
             var productdb = client.GetDatabase(config["DatabaseSettings:DatabaseName"]);
-            var products = productdb.GetCollection<Product>(config["DatabaseSettings:CollectionName"]);
-            SeedData(products);
+            Products = productdb.GetCollection<Product>(config["DatabaseSettings:CollectionName"]);
+            SeedData(Products);
         }
 
         private void SeedData(IMongoCollection<Product> products)
