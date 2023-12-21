@@ -1,7 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient("ShoppingApiClient", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5003/");
+});
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
